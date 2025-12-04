@@ -22,6 +22,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
@@ -89,7 +90,7 @@
       min-height: 120px;
     }
 
-    /* Nút Facebook gradient xanh */
+    /* Nút gradient xanh */
     .btn {
       display: inline-block;
       margin-top: 18px;
@@ -114,11 +115,35 @@
       font-size: 14px;
     }
 
-    .music {
-      margin-top: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+
+    /* 🐶 Hiệu ứng chó rớt từ trên xuống */
+    .dog {
+      position: fixed;
+      top: -80px;
+      width: 60px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      animation: fall 2.4s ease-out forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-120px) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      70% {
+        transform: translateY(70vh) rotate(40deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(80deg) scale(1.2);
+        opacity: 0;
+      }
     }
 
     @media(max-width: 720px){
@@ -129,6 +154,7 @@
 </head>
 
 <body>
+
   <header>
     <h1>Giới thiệu bản thân</h1>
     <p>Trang cá nhân của Huỳnh Ngọc</p>
@@ -156,21 +182,49 @@
         <!-- Facebook -->
         <a class="btn" href="https://www.facebook.com/huynh.ngoc.697854?" target="_blank">📘 Facebook của mình</a>
 
-        <!-- Trình phát nhạc tự động -->
-        <div class="music">
-          <iframe width="100%" height="200"
-            src="https://www.youtube.com/embed/TTNGi1A5Zqw?autoplay=1&mute=0"
-            title="Đoạn Kết Mới"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <!-- Instagram -->
+        <a class="btn" href="https://www.instagram.com/h_mariana_18?igsh=cjFjYml4ZWg5OTRq&utm_source=qr" target="_blank" style="margin-left: 10px;">
+          📸 Instagram
+        </a>
 
       </div>
     </div>
   </div>
 
   <footer>© 2025 — Trang cá nhân của Huỳnh Ngọc</footer>
+
+  <!-- Script tạo chó rơi -->
+  <script>
+    const dogImgs = [
+      "https://i.imgur.com/cKp4VJ0.png",
+      "https://i.imgur.com/1f8YpS4.png",
+      "https://i.imgur.com/B6G1Q0J.png",
+      "https://i.imgur.com/DP5GpN0.png"
+    ];
+
+    function spawnDog() {
+      const dog = document.createElement("img");
+      dog.src = dogImgs[Math.floor(Math.random() * dogImgs.length)];
+      dog.className = "dog";
+
+      const size = 40 + Math.random() * 40;
+      dog.style.width = size + "px";
+      dog.style.height = size + "px";
+
+      dog.style.left = Math.random() * (window.innerWidth - 80) + "px";
+
+      document.body.appendChild(dog);
+
+      setTimeout(() => dog.remove(), 2600);
+    }
+
+    // tạo 6 con chó khi vào trang
+    window.onload = () => {
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => spawnDog(), i * 350);
+      }
+    };
+  </script>
+
 </body>
 </html>
