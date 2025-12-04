@@ -13,7 +13,9 @@
       --text: #111827;
       --muted: #6b7280;
     }
+
     * { box-sizing: border-box; }
+
     body {
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
       margin: 0;
@@ -21,12 +23,14 @@
       color: var(--text);
       line-height: 1.6;
     }
+
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #fff;
       padding: 48px 20px;
       text-align: center;
     }
+
     header h1 { font-size: 36px; margin: 0 0 10px; }
     header p { font-size: 16px; margin: 0; opacity: 0.9; }
 
@@ -62,6 +66,7 @@
       border: 5px solid rgba(255,255,255,0.6);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
+
     .avatar img {
       width: 100%;
       height: 100%;
@@ -72,14 +77,9 @@
       flex: 2 1 320px;
       padding: 30px 40px;
     }
-    .right h2 {
-      margin: 0 0 8px;
-      font-size: 26px;
-    }
-    .right .meta {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+
+    .right h2 { margin: 0 0 8px; font-size: 26px; }
+    .right .meta { color: var(--muted); margin-bottom: 16px; }
 
     .about {
       background: #f9fafb;
@@ -89,11 +89,36 @@
       min-height: 120px;
     }
 
+    /* Nút Facebook gradient xanh */
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
     footer {
       text-align: center;
       padding: 20px 0;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .music {
+      margin-top: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
     }
 
     @media(max-width: 720px){
@@ -124,9 +149,24 @@
         <div class="about">
           <p>
             Xin chào! Mình là <strong>Huỳnh Ngọc</strong>, hiện đang học lớp 12 Anh tại trường THPT Chuyên Bến Tre.
-          Mình là một cô gái mộng mơ, thích đồ ngọt và cái đẹp
+            Mình là một cô gái mộng mơ, thích đồ ngọt và cái đẹp.
           </p>
         </div>
+
+        <!-- Facebook -->
+        <a class="btn" href="https://www.facebook.com/huynh.ngoc.697854?" target="_blank">📘 Facebook của mình</a>
+
+        <!-- Trình phát nhạc tự động -->
+        <div class="music">
+          <iframe width="100%" height="200"
+            src="https://www.youtube.com/embed/TTNGi1A5Zqw?autoplay=1&mute=0"
+            title="Đoạn Kết Mới"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
       </div>
     </div>
   </div>
